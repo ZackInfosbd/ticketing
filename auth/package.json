@@ -1,9 +1,23 @@
 {
   "name": "zackinfosdb",
   "version": "1.0.0",
-  "description": "web app that manages second-hand tickets selling",
+  "description": "Auth-Service, web app that manages second-hand tickets selling",
   "main": "app.js",
   "repository": "https://github.com/ZackInfosbd/ticketing",
   "author": "zackinfosbd1",
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "start": "ts-node-dev src/app.ts"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1"
+  }
 }
