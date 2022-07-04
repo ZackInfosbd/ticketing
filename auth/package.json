@@ -1,0 +1,9 @@
+{
+  "name": "zackinfosdb",
+  "version": "1.0.0",
+  "description": "web app that manages second-hand tickets selling",
+  "main": "app.js",
+  "repository": "https://github.com/ZackInfosbd/ticketing",
+  "author": "zackinfosbd1",
+  "license": "MIT"
+}
