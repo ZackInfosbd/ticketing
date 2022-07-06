@@ -1,32 +1,40 @@
 import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
-import { signupRouter } from './routes/signup';
+import mongoose from 'mongoose';
+
+import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
-import { currentuserRouter } from './routes/current-user';
+import { signupRouter } from './routes/signup';
 import { errorHandler } from './middleware/error-handler';
 import { NotFoundError } from './errors/not-found-error';
 
 const app = express();
-
-// Middlewares
 app.use(json());
 
-// Routes
-app.use(signupRouter);
+app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
-app.use(currentuserRouter);
+app.use(signupRouter);
 
-app.all('*', (req, res, next) => {
-  // next(new NotFoundError());
+app.all('*', async (req, res) => {
   throw new NotFoundError();
 });
 
-// Middlewares
 app.use(errorHandler);
 
-app.listen(3000, () => {
-  console.log(`🚀 Auth Server listening on port 3000!`);
-});
+const start = async () => {
+  try {
+    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth');
+    console.log('Connected to MongoDb');
+  } catch (err) {
+    console.error(err);
+  }
+
+  app.listen(3000, () => {
+    console.log('🚀 Auth Server listening on port 3000');
+  });
+};
+
+start();
