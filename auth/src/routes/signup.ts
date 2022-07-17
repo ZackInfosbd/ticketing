@@ -30,7 +30,6 @@ router.post(
     await user.save();
 
     // Generate jwt
-
     const userJwt = jwt.sign(
       {
         id: user.id,
