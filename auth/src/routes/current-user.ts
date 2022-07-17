@@ -1,10 +1,10 @@
 import express from 'express';
-import { body } from 'express-validator';
+import { currentUser } from '../middleware/current-user';
 
 const router = express();
 
-router.get('/api/users/currentuser', (req, res) => {
-  res.send('log from current user route');
+router.get('/api/users/currentuser', currentUser, (req, res) => {
+  res.send({ currentUser: req.currentUser || null });
 });
 
 export { router as currentUserRouter };
