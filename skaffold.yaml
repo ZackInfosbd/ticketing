@@ -16,7 +16,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: zackinfosdb1/client
+    - image: zackinfosdb1/ticketing-client
       context: client
       docker:
         dockerfile: Dockerfile
