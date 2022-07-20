@@ -1,9 +1,10 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
+import jwt from 'jsonwebtoken';
+
 import { validateRequest } from '../middleware/validate-request';
 import { User } from '../models/User';
 import { BadRequestError } from '../errors/bad-request-error';
-import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
@@ -29,7 +30,7 @@ router.post(
     const user = User.build({ email, password });
     await user.save();
 
-    // Generate jwt
+    // Generate JWT
     const userJwt = jwt.sign(
       {
         id: user.id,
