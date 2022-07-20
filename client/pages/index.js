@@ -1,12 +1,13 @@
 import React from 'react';
 import buildClient from '../api/build-client';
 
-const LandingPage = (data) => {
-  console.log(data);
-
-  // axios.get('/api/users/currentuser').catch((err) => console.log(err));
-
-  return <h1>Landing Page</h1>;
+const LandingPage = ({ currentUser }) => {
+  console.log(currentUser);
+  return currentUser ? (
+    <h1>You are signed in</h1>
+  ) : (
+    <h1>You are NOT signed in</h1>
+  );
 };
 
 LandingPage.getInitialProps = async (context) => {
